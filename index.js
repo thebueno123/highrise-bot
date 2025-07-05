@@ -4,10 +4,10 @@ dotenv.config();
 
 const socket = new WebSocket("wss://gateway.highrise.game/web/websocket");
 
-ws.on("open", () => {
+socket.on("open", () => {
   console.log("✅ Connected to Highrise gateway");
 
-  ws.send(
+  socket.send(
     JSON.stringify({
       _type: "AuthenticateRequest",
       token: process.env.API_KEY,
@@ -15,7 +15,7 @@ ws.on("open", () => {
   );
 });
 
-ws.on("message", (data) => {
+socket.on("message", (data) => {
   const message = JSON.parse(data);
   console.log("📨", message);
 
@@ -26,12 +26,11 @@ ws.on("message", (data) => {
   ) {
     const username = message.user.username;
 
-    ws.send(
+    socket.send(
       JSON.stringify({
         _type: "SendMessageRequest",
         message: `👋 Welcome in @${username}! 🎁 1 item per person | 💺 Sit in line | 💸 Tips appreciated!`,
         roomId: process.env.ROOM_ID,
-
       })
     );
   }
