@@ -2,7 +2,7 @@ import WebSocket from "ws";
 import dotenv from "dotenv";
 dotenv.config();
 
-const socket = new WebSocket("wss://gateway-v2.highrise.game/web/websocket");
+const socket = new WebSocket("wss://gateway.highrise.game/web/websocket");
 
 socket.on("open", () => {
   console.log("✅ Connected to Highrise gateway");
@@ -13,11 +13,6 @@ socket.on("open", () => {
       token: process.env.API_KEY,
     })
   );
-});
-
-// ✅ Add this error handler RIGHT HERE:
-socket.on("error", (error) => {
-  console.error("❌ WebSocket error:", error);
 });
 
 socket.on("message", (data) => {
@@ -40,3 +35,9 @@ socket.on("message", (data) => {
     );
   }
 });
+
+// 🛑 Prevent crash from WebSocket errors
+socket.on("error", (error) => {
+  console.error("❌ WebSocket error:", error);
+});
+
