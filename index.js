@@ -15,6 +15,11 @@ socket.on("open", () => {
   );
 });
 
+// ✅ Add this error handler RIGHT HERE:
+socket.on("error", (error) => {
+  console.error("❌ WebSocket error:", error);
+});
+
 socket.on("message", (data) => {
   const message = JSON.parse(data);
   console.log("📨", message);
