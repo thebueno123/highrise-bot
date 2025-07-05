@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "name": "highrise-bot",
+  "version": "1.0.0",
+  "description": "Highrise bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ws": "^8.11.0"
+  }
+}
