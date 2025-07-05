@@ -2,7 +2,7 @@ import WebSocket from "ws";
 import dotenv from "dotenv";
 dotenv.config();
 
-const socket = new WebSocket("wss://gateway.highrise.game/web/websocket?build=bot");
+const socket = new WebSocket("wss://gateway-v2.highrise.game/web/websocket");
 
 socket.on("open", () => {
   console.log("✅ Connected to Highrise gateway");
